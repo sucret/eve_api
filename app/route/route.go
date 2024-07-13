@@ -7,16 +7,8 @@ import (
 type AppRouter struct{}
 
 func (*AppRouter) AddRoute(e *gin.Engine) {
-	e.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "ping"})
-	})
-
-	e.GET("/pong", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "pong"})
-	})
-
-	//genAdminRouter(e.Group("/admin"))
-	//genAppRouter(e.Group("/app"))
+	genAdminRouter(e.Group("/admin"))
+	genAppRouter(e.Group("/app"))
 }
 
 func New() *AppRouter {

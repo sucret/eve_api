@@ -18,6 +18,7 @@ type Http struct {
 	port   string      // http服务端口号
 }
 
+// New 实例化http对象
 func New() *Http {
 	entity := &Http{
 		engine: gin.New(),
@@ -27,6 +28,13 @@ func New() *Http {
 	return entity
 }
 
+// GenRouter 注册路由
+// 这里需要调用外部的route库，所以先定义一个Interface，并在外部实现Interface
+func (h *Http) GenRouter(r route.RouterGeneratorInterface) {
+	r.AddRoute(h.engine)
+}
+
+// Run 启动服务
 func (h *Http) Run() {
 	srv := &http.Server{
 		Addr:    h.port,
@@ -41,12 +49,6 @@ func (h *Http) Run() {
 	}()
 
 	h.ListenSignal(srv)
-}
-
-// GenRouter 注册路由
-// 这里需要调用外部的route库，所以先定义一个Interface，并在外部实现Interface
-func (h *Http) GenRouter(r route.RouterGeneratorInterface) {
-	r.AddRoute(h.engine)
 }
 
 func (h *Http) ListenSignal(srv *http.Server) {
