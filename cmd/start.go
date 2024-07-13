@@ -2,7 +2,9 @@
 package cmd
 
 import (
-	"github.com/gin-gonic/gin"
+	"eve/app/route"
+	//_ "eve/internal/bootstrap"
+	"eve/internal/server"
 	"github.com/spf13/cobra"
 )
 
@@ -18,27 +20,10 @@ var startCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(startCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// startCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// startCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
 func run() {
-	r := gin.New()
-
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{"Message": "Hello World"})
-	})
-
-	err := r.Run(":8082")
-	if err != nil {
-		return
-	}
+	http := server.New()
+	http.GenRouter(route.New())
+	http.Run()
 }
