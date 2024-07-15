@@ -3,7 +3,6 @@ package cmd
 
 import (
 	"eve/app/route"
-	//_ "eve/internal/bootstrap"
 	"eve/internal/server"
 	"github.com/spf13/cobra"
 )

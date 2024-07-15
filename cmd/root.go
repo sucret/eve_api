@@ -2,9 +2,9 @@
 package cmd
 
 import (
-	"os"
-
+	_ "eve/internal/bootstrap"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 // rootCmd represents the base command when called without any subcommands
