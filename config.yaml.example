@@ -4,7 +4,6 @@ app: # 应用基本配置
   app_name: eve # 应用名称
 
 database:
-  driver: mysql # 数据库驱动
   host: 127.0.0.1 # 域名
   port: 3306 # 端口号
   database: eve # 数据库名称
