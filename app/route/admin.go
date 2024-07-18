@@ -7,4 +7,5 @@ import (
 
 func genAdminRouter(rg *gin.RouterGroup) {
 	rg.GET("/profile", admin.AdminApi.Profile)
+	rg.POST("/save", admin.AdminApi.Save)
 }

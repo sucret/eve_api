@@ -21,6 +21,14 @@ func Success(c *gin.Context, data interface{}) {
 	})
 }
 
+func ValidateFailed(c *gin.Context, msg string) {
+	c.JSON(http.StatusOK, Response{
+		1,
+		nil,
+		msg,
+	})
+}
+
 // Error 失败返回
 func Error(c *gin.Context, errorCode int, msg string) {
 	c.JSON(http.StatusOK, Response{
