@@ -14,7 +14,7 @@ func init() {
 	global.Config = config.GetConfig()
 
 	// 初始化数据库
-	global.Db = mysql.GetConnection()
+	global.DB = mysql.GetConnection()
 
 	// 初始化日志
 	if global.Logger, err = logger.New(); err != nil {

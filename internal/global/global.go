@@ -8,6 +8,6 @@ import (
 
 var (
 	Config *config.Config
-	Db     *gorm.DB
+	DB     *gorm.DB
 	Logger *zap.Logger
 )
