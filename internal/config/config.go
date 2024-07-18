@@ -10,6 +10,7 @@ import (
 type Config struct {
 	App      App
 	Database Database
+	Logger   Logger
 }
 
 // GetConfig 读取配置文件
