@@ -22,11 +22,15 @@ func Success(c *gin.Context, data interface{}) {
 }
 
 func ValidateFailed(c *gin.Context, msg string) {
-	c.JSON(http.StatusOK, Response{
-		1,
-		nil,
-		msg,
-	})
+	Error(c, ValidateError, msg)
+}
+
+func PermissionDenied(c *gin.Context) {
+	Error(c, HaveNoPermission, ErrorMap[HaveNoPermission])
+}
+
+func BusinessFail(c *gin.Context, msg string) {
+	Error(c, BusinessError, msg)
 }
 
 // Error 失败返回
