@@ -5,6 +5,7 @@ import (
 	"eve/internal/global"
 	"eve/internal/logger"
 	"eve/internal/mysql"
+	"eve/internal/validator"
 )
 
 func init() {
@@ -21,4 +22,7 @@ func init() {
 		panic(err)
 		return
 	}
+
+	// 注册验证器
+	validator.InitValidator()
 }
