@@ -19,6 +19,6 @@ func (a *adminApi) Profile(c *gin.Context) {
 func (a *adminApi) Save(c *gin.Context) {
 	var admin request.SaveAdmin
 	if err := c.ShouldBind(&admin); err != nil {
-		response.ValidateFailed(c, err.Error())
+		response.ValidateFailed(c, request.GetErrorMsg(admin, err))
 	}
 }
