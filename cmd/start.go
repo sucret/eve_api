@@ -1,6 +1,8 @@
 // Package cmd /*
 package cmd
 
+import _ "eve/app/event"
+
 import (
 	"eve/app/route"
 	"eve/internal/server"

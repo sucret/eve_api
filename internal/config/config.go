@@ -1,9 +1,10 @@
 package config
 
 import (
-	"eve/internal/tool"
 	"fmt"
 	"github.com/spf13/viper"
+	"path"
+	"runtime"
 )
 
 // Config 配置文件集合
@@ -16,7 +17,9 @@ type Config struct {
 // GetConfig 读取配置文件
 func GetConfig() (c *Config) {
 	// 获取项目的根目录
-	rootDir, _ := tool.GetRootDir()
+	_, filePath, _, _ := runtime.Caller(0)
+	dirPath := path.Dir(filePath)
+	rootDir := dirPath + "/../../"
 
 	// 实例化viper，并根据地址读取配置文件
 	v := viper.New()
