@@ -1,7 +1,9 @@
 package bootstrap
 
 import (
+	"eve/app/task"
 	"eve/internal/config"
+	"eve/internal/crontab"
 	"eve/internal/event"
 	"eve/internal/global"
 	"eve/internal/logger"
@@ -29,4 +31,9 @@ func init() {
 
 	// 初始化事件机制
 	global.EventDispatcher = event.New()
+
+	// 初始化定时任务
+	global.Crontab = crontab.Init()
+	global.Crontab.AddTask(task.Tasks()...)
+	global.Crontab.Start()
 }
